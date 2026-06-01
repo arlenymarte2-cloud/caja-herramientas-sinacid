@@ -1,13 +1,385 @@
-<!doctype html> 
-<html lang="en"> 
-  <head> 
+<!doctype html>
+<html lang="es">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Caja de Herramientas SINACID</title> 
-    <script type="module" crossorigin src="./assets/index-BooE5vtt.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CcqNvLx7.css"> 
-  </head> <body>
-    <div id="root">
-  </div>
-  </body> 
+    <title>Caja de Herramientas del SINACID | Funcionamiento del SINACID</title>
+    <style>
+      :root {
+        --navy: #0b1f3a;
+        --blue: #123c73;
+        --red: #c62828;
+        --bg: #f5f7fa;
+        --border: #d9e2ec;
+        --text: #243b53;
+        --white: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Open Sans", "Segoe UI", Arial, system-ui, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 3rem));
+        margin: 0 auto;
+      }
+
+      section { padding: 4.5rem 0; }
+      h1, h2, h3, h4 { margin: 0 0 1rem; line-height: 1.25; }
+      h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--white); }
+      h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--navy); }
+      h3 { font-size: 1.2rem; color: var(--navy); }
+      p { margin: 0 0 1rem; }
+
+      .hero {
+        color: var(--white);
+        background:
+          radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.14), transparent 30%),
+          radial-gradient(circle at 85% 18%, rgba(198, 40, 40, 0.15), transparent 30%),
+          linear-gradient(140deg, #08172c, #123c73);
+      }
+
+      .hero-inner { max-width: 920px; text-align: center; margin: 0 auto; }
+      .hero p { color: #e3ebf6; }
+      .eyebrow {
+        display: inline-block;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 999px;
+        padding: 0.3rem 0.8rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .hero-subtitle {
+        margin-top: 1.4rem;
+        color: var(--white);
+        font-weight: 700;
+        font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+      }
+
+      .card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 10px 24px rgba(11, 31, 58, 0.06);
+      }
+
+      .intro-card {
+        padding: 2rem;
+        border-left: 6px solid var(--blue);
+      }
+      .quote {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 12px;
+        background: #eef4fb;
+        color: var(--blue);
+        font-weight: 600;
+      }
+
+      .diagram-grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+        position: relative;
+      }
+
+      .diagram-grid::before,
+      .diagram-grid::after {
+        content: "";
+        position: absolute;
+        background: #b9cbe1;
+        z-index: 0;
+      }
+      .diagram-grid::before { left: 50%; top: 12%; bottom: 12%; width: 1px; }
+      .diagram-grid::after { top: 50%; left: 9%; right: 9%; height: 1px; }
+
+      .diagram-item {
+        position: relative;
+        z-index: 1;
+        padding: 1.2rem;
+      }
+      .icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: #eef4fb;
+        display: grid;
+        place-items: center;
+        color: var(--blue);
+        font-weight: 800;
+        margin-bottom: 0.7rem;
+      }
+
+      .actors-grid,
+      .sector-grid {
+        margin-top: 1.8rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .actors-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; }
+      .actor-card { padding: 1.3rem; }
+      .actor-card.rector {
+        border: 1px solid #c9d8ec;
+        box-shadow: 0 12px 22px rgba(18, 60, 115, 0.1);
+      }
+      .subcard {
+        margin-top: 0.8rem;
+        background: #f8fbff;
+        border: 1px solid #d9e7f7;
+        border-radius: 12px;
+        padding: 0.8rem;
+      }
+      .subcard h4 { margin-bottom: 0.45rem; font-size: 1rem; color: var(--blue); }
+      .highlight {
+        margin-top: 1.5rem;
+        text-align: center;
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      .sector-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .sector-card { padding: 1.2rem; }
+      .sector-card h3 { font-size: 1.08rem; }
+
+      .impact {
+        background: linear-gradient(180deg, #f2f6fc, #eaf1fa);
+        border-top: 1px solid #d9e2ec;
+        border-bottom: 1px solid #d9e2ec;
+      }
+      .impact .card { padding: 2rem; text-align: center; }
+
+      .final {
+        background: #ffffff;
+      }
+
+      .final-box {
+        padding: 2rem;
+        text-align: center;
+      }
+      .final-phrase {
+        margin: 1.5rem 0;
+        color: var(--blue);
+        font-weight: 800;
+        font-size: clamp(1.05rem, 2vw, 1.4rem);
+      }
+      .button-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+      .button-row a {
+        text-decoration: none;
+        background: var(--navy);
+        color: var(--white);
+        padding: 0.62rem 1rem;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        font-size: 0.93rem;
+      }
+      .button-row a.secondary {
+        background: #fff;
+        color: var(--blue);
+        border-color: #c7d6ea;
+      }
+
+      @media (max-width: 1080px) {
+        .actors-grid { grid-template-columns: 1fr 1fr; }
+      }
+
+      @media (max-width: 760px) {
+        section { padding: 3.5rem 0; }
+        .container { width: min(1120px, calc(100% - 1.4rem)); }
+        .diagram-grid,
+        .sector-grid,
+        .actors-grid { grid-template-columns: 1fr; }
+        .diagram-grid::before,
+        .diagram-grid::after { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="eyebrow">Caja de Herramientas del SINACID</span>
+        <h1>Funcionamiento del SINACID</h1>
+        <p>
+          La cooperación internacional es una herramienta estratégica para apoyar el desarrollo nacional. Permite al país acceder a conocimientos, tecnologías, experiencias y recursos que fortalecen las políticas públicas y contribuyen a mejorar la calidad de vida de la población. En la República Dominicana, esta cooperación se organiza a través del Sistema Nacional de Cooperación Internacional para el Desarrollo, SINACID, que articula a las instituciones públicas, los socios cooperantes y otros actores relevantes bajo una lógica de coordinación, alineación y transparencia.
+        </p>
+        <p class="hero-subtitle">Un sistema articulado al servicio del desarrollo nacional.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card intro-card">
+          <h2>¿Qué es el SINACID y por qué es importante?</h2>
+          <p>
+            El SINACID es el sistema que organiza, articula y orienta la gestión de la cooperación internacional para el desarrollo en la República Dominicana. Su función es asegurar que la cooperación responda a las prioridades nacionales, se gestione de manera coordinada y contribuya efectivamente a resultados de desarrollo.
+          </p>
+          <p>
+            A través de este sistema, la cooperación internacional no se maneja de forma dispersa ni aislada. Por el contrario, se integra a una lógica institucional que busca mejorar la eficacia en el uso de los recursos, fortalecer la articulación entre actores y promover una gestión más transparente y orientada a resultados.
+          </p>
+          <p class="quote">El SINACID permite que la cooperación internacional se gestione como un esfuerzo articulado al servicio del desarrollo nacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>¿Cómo funciona el SINACID?</h2>
+        <p>
+          El funcionamiento del SINACID puede explicarse como una estructura articulada en la que distintos actores cumplen roles complementarios para asegurar que la cooperación internacional sea planificada, coordinada, canalizada y aprovechada de manera efectiva.
+        </p>
+        <p>
+          Su operación combina tres niveles de actores y un conjunto de mecanismos de coordinación que permiten conectar prioridades nacionales, capacidades institucionales y oportunidades de apoyo internacional.
+        </p>
+
+        <div class="diagram-grid">
+          <article class="card diagram-item">
+            <div class="icon">R</div>
+            <h3>Nivel rector</h3>
+            <p>Orienta, coordina y regula la cooperación.</p>
+          </article>
+          <article class="card diagram-item">
+            <div class="icon">E</div>
+            <h3>Nivel ejecutor</h3>
+            <p>Formula e implementa iniciativas y proyectos.</p>
+          </article>
+          <article class="card diagram-item">
+            <div class="icon">C</div>
+            <h3>Nivel cooperante</h3>
+            <p>Aporta recursos, conocimientos y apoyo técnico.</p>
+          </article>
+          <article class="card diagram-item">
+            <div class="icon">M</div>
+            <h3>Mecanismos de coordinación</h3>
+            <p>Articulan prioridades, actores e iniciativas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Actores que hacen funcionar el sistema</h2>
+        <div class="actors-grid">
+          <article class="card actor-card rector">
+            <h3>Nivel rector</h3>
+            <p>
+              El nivel rector está integrado por las instancias que dirigen, ordenan y aseguran la coherencia de la cooperación internacional dentro del marco institucional del Estado.
+            </p>
+            <div class="subcard">
+              <h4>Viceministerio de Cooperación Internacional, VIMICI</h4>
+              <p>
+                El VIMICI es el órgano rector del SINACID. Define políticas, normas y estrategias para la gestión integral de la cooperación internacional, asegura la alineación con las prioridades nacionales de desarrollo, coordina la articulación interinstitucional, impulsa el uso del Sistema de Información del SINACID y participa en espacios internacionales de cooperación.
+              </p>
+            </div>
+            <div class="subcard">
+              <h4>Ministerio de Relaciones Exteriores, MIREX</h4>
+              <p>
+                El MIREX es responsable de la política exterior y de las relaciones diplomáticas del país. Su rol es acompañar la articulación política con los países y organismos socios, apoyar la formalización de acuerdos internacionales y fortalecer el posicionamiento de la República Dominicana en los espacios multilaterales.
+              </p>
+            </div>
+            <div class="subcard">
+              <h4>Ministerio de Hacienda</h4>
+              <p>
+                El Ministerio de Hacienda es rector de las finanzas públicas. En el marco del funcionamiento del sistema, su papel se vincula a la autorización, registro y seguimiento de los recursos financieros provenientes de la cooperación, así como a su integración en los sistemas nacionales de administración financiera y control.
+              </p>
+            </div>
+          </article>
+
+          <article class="card actor-card">
+            <h3>Nivel ejecutor</h3>
+            <p>
+              El nivel ejecutor está conformado por las instituciones que convierten la cooperación en resultados concretos.
+            </p>
+            <p>
+              Incluye ministerios, direcciones generales, entidades públicas y gobiernos locales que formulan y ejecutan proyectos de cooperación conforme a las normas del sistema. También pueden participar la academia, el sector privado y las organizaciones de la sociedad civil, cuando aportan capacidades técnicas, innovación, implementación territorial o experiencia sectorial.
+            </p>
+          </article>
+
+          <article class="card actor-card">
+            <h3>Nivel cooperante</h3>
+            <p>
+              El nivel cooperante está integrado por los países, agencias y organismos internacionales que aportan recursos financieros, asistencia técnica, formación, intercambio de conocimientos o apoyo institucional para fortalecer las políticas públicas nacionales.
+            </p>
+            <p>
+              Entre estos socios se incluyen agencias bilaterales, organismos multilaterales y mecanismos regionales de cooperación. Su contribución puede expresarse a través de distintos instrumentos y modalidades, según las prioridades del país y las fortalezas de cada socio.
+            </p>
+          </article>
+
+          <article class="card actor-card">
+            <h3>Mecanismos de coordinación</h3>
+            <p>
+              El funcionamiento del SINACID se apoya en espacios formales de diálogo y priorización en los que participan los distintos actores del sistema. Estos mecanismos permiten evaluar demandas, identificar oportunidades de cooperación, alinear iniciativas con el PNPCI y reducir duplicidades entre intervenciones.
+            </p>
+          </article>
+        </div>
+        <p class="highlight">El SINACID funciona cuando la rectoría, la ejecución, la cooperación y la coordinación operan de manera articulada.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>¿Cómo se traduce la cooperación en resultados?</h2>
+        <p>
+          La cooperación internacional se materializa en iniciativas que fortalecen políticas públicas y generan beneficios directos para la población. En la práctica, los recursos de cooperación apoyan sectores como salud, educación, desarrollo rural, agua y saneamiento, empleo, emprendimiento, medioambiente y cambio climático.
+        </p>
+        <p>
+          Esto significa que la cooperación contribuye a ampliar capacidades del Estado, mejorar servicios, fortalecer instituciones y acelerar resultados en áreas estratégicas del desarrollo. En este sentido, la cooperación no sustituye la acción pública, sino que la complementa y la potencia.
+        </p>
+
+        <div class="sector-grid">
+          <article class="card sector-card"><h3>Salud</h3><p>Equipamiento, formación, fortalecimiento hospitalario y apoyo técnico.</p></article>
+          <article class="card sector-card"><h3>Educación</h3><p>Infraestructura, formación docente, conectividad y educación técnica.</p></article>
+          <article class="card sector-card"><h3>Desarrollo rural</h3><p>Apoyo productivo, seguridad alimentaria y sostenibilidad.</p></article>
+          <article class="card sector-card"><h3>Agua y saneamiento</h3><p>Acceso, gestión y fortalecimiento comunitario.</p></article>
+          <article class="card sector-card"><h3>Empleo y emprendimiento</h3><p>Capacitación, inclusión económica y oportunidades para jóvenes y mujeres.</p></article>
+          <article class="card sector-card"><h3>Medioambiente y cambio climático</h3><p>Reforestación, adaptación y fortalecimiento de resiliencia.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div class="container">
+        <div class="card">
+          <h2>Cooperar para generar impacto</h2>
+          <p>
+            El funcionamiento del SINACID cobra sentido cuando la cooperación se traduce en resultados visibles para las personas y los territorios.
+          </p>
+          <p>
+            La cooperación internacional permite movilizar recursos, compartir capacidades y acelerar resultados que contribuyen al bienestar de la población.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="container">
+        <div class="card final-box">
+          <p>
+            El SINACID hace posible que la cooperación internacional se gestione de manera articulada, transparente y orientada a resultados. A través de este sistema, las prioridades nacionales dialogan con las oportunidades de cooperación, los actores se coordinan y los recursos se canalizan hacia iniciativas que fortalecen el desarrollo nacional.
+          </p>
+          <p class="final-phrase">
+            SINACID: un sistema que organiza la cooperación internacional al servicio del desarrollo y la calidad de vida.
+          </p>
+          <div class="button-row">
+            <a href="#">Ver componentes del SINACID</a>
+            <a class="secondary" href="#">Explorar ciclo de gestión</a>
+            <a class="secondary" href="#">Consultar centro de recursos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
