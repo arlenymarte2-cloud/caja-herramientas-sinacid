@@ -84,11 +84,13 @@ main{max-width:1240px;margin:auto;padding:0 26px 84px;position:relative;z-index:
 .title h2{margin:0;font-size:34px;letter-spacing:-.03em;color:var(--navy)}
 .title p{margin:10px 0 0;color:var(--muted);font-size:16px;line-height:1.55;max-width:760px}
 
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+@media(max-width:1240px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .card{position:relative;border-radius:20px;overflow:hidden;text-decoration:none;background:#fff;box-shadow:0 14px 34px rgba(8,40,74,.08);transition:.22s ease;border:1px solid #dbe5ee;display:flex;flex-direction:column;min-height:365px}
 .card:hover{transform:translateY(-4px);box-shadow:0 20px 46px rgba(8,40,74,.12)}
 .card .bg{position:relative;height:155px;background-size:cover;background-position:center;flex:0 0 auto}
 .card .bg.programa{background-image:linear-gradient(rgba(8,40,74,.05),rgba(8,40,74,.03)),url('fondo-2.jpg')}
+.card .bg.apertura{background-image:linear-gradient(rgba(8,40,74,.10),rgba(8,40,74,.04)),url('fondo-1.jpg');background-position:72% 40%}
 .card .bg.seccion1{background-image:linear-gradient(rgba(8,40,74,.04),rgba(8,40,74,.02)),url('fondo-3.jpg')}
 .card .bg.seccion2{background-image:linear-gradient(rgba(8,40,74,.04),rgba(8,40,74,.02)),url('fondo-4.jpg')}
 .card .bg.recursos{background-image:linear-gradient(rgba(8,40,74,.04),rgba(8,40,74,.02)),url('fondo-5.jpg')}
@@ -97,7 +99,7 @@ main{max-width:1240px;margin:auto;padding:0 26px 84px;position:relative;z-index:
 .card .state.live{color:#1f6a4c}
 .card .state.future{color:#6b7d90}
 .card .copy{max-width:100%;padding-top:7px}
-.card h3,.card h3.dark{margin:0 0 9px;font-size:23px;line-height:1.08;letter-spacing:-.025em;color:var(--navy)}
+.card h3,.card h3.dark{margin:0 0 9px;font-size:21px;line-height:1.08;letter-spacing:-.025em;color:var(--navy)}
 .card p,.card p.dark{margin:0;color:#687b8e;font-size:14px;line-height:1.5}
 .card .cta,.card .cta.dark{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-width:148px;width:max-content;padding:10px 16px;border-radius:999px;background:#fff;border:1px solid #9eb3c7;color:var(--navy);font-weight:700;font-size:13px}
 .card .cta:hover{border-color:var(--navy)}
@@ -285,6 +287,17 @@ footer{margin-top:18px;border-top:1px solid var(--line);background:#f5f8fb}
             <p>Objetivos, estructura, metodología de trabajo, actividades y calendario del proceso formativo.</p>
           </div>
           <span class="cta"><span>Abrir programa</span><span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#apertura">
+        <div class="bg apertura"></div>
+        <div class="overlay">
+          <span class="state live">Disponible</span>
+          <div class="copy">
+            <h3>Jornada de apertura</h3>
+            <p>Marco estratégico común: ponentes, agenda y presentaciones de la jornada del 28 de septiembre.</p>
+          </div>
+          <span class="cta"><span>Ir a la sección</span><span>→</span></span>
         </div>
       </a>
       <a class="card" href="#sesion1">
