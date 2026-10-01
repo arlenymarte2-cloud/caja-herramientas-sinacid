@@ -186,6 +186,20 @@ footer{margin-top:18px;border-top:1px solid var(--line);background:#f5f8fb}
 @media(max-width:1080px){.s2-blocks{grid-template-columns:1fr}.s2-steps{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.activity{grid-template-columns:1fr;gap:10px}.activity .num{width:40px;height:40px}.s2-steps{grid-template-columns:1fr}.actions .btn{flex:1 1 auto}}
 
+
+/* Jornada de apertura */
+.speakers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0 6px}
+.speaker{background:#fff;border:1px solid #e5edf5;border-radius:20px;overflow:hidden;box-shadow:0 10px 24px rgba(11,37,65,.05);display:flex;flex-direction:column}
+.speaker img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;object-position:top;background:#eef3f8}
+.speaker-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.speaker-time{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:6px}
+.speaker h4{margin:0 0 4px;color:var(--navy);font-size:19px}
+.speaker-role{font-size:13px;color:var(--muted);line-height:1.45;margin-bottom:10px}
+.speaker p{margin:0 0 14px;color:var(--text);font-size:14px;line-height:1.5;flex:1}
+.speaker-actions{display:flex;gap:8px;flex-wrap:wrap}
+.speaker-actions .btn{min-height:40px;padding:9px 16px;font-size:13px}
+@media(max-width:1080px){.speakers{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.speakers{grid-template-columns:1fr}.speaker img{aspect-ratio:4/3;object-position:center 15%}.speaker-actions .btn{flex:1 1 auto}}
 </style>
 </head>
 <body>
@@ -202,6 +216,7 @@ footer{margin-top:18px;border-top:1px solid var(--line);background:#f5f8fb}
     <nav class="nav">
       <a href="#contenido">Contenido</a>
       <a href="#programa">Programa</a>
+      <a href="#apertura">Apertura</a>
       <a href="#sesion1">Sección 1</a>
       <a href="#sesion2">Sección 2</a>
       <a href="#recursos">Recursos</a>
@@ -326,6 +341,105 @@ footer{margin-top:18px;border-top:1px solid var(--line);background:#f5f8fb}
           <a class="btn btn-outline" href="Programa_del_curso_y_metodologia_de_trabajo.pdf" download>Descargar PDF</a>
         </div>
         <div class="note" style="margin-top:18px"><strong>Ruta del proceso:</strong> apertura, Sección 1, Sección 2, trabajo institucional, revisión técnica y validación sectorial. El programa establece como resultado una cartera de prioridades de cooperación internacional no reembolsable y orienta su utilización posterior para la gestión de cooperación.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="apertura">
+    <div class="title">
+      <div class="eyebrow">Jornada de apertura</div>
+      <h2>Marco estratégico común</h2>
+      <p>Inicio del curso con orientaciones generales, objetivos y el marco común de la cooperación, la política exterior, la planificación nacional y las prioridades de Gobierno.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head photo">
+        <div class="label">Lunes 28 de septiembre de 2026 · 9:00 a. m. – 12:00 p. m. · Presencial</div>
+        <h3>Salón Hermanas Mirabal, Palacio Nacional</h3>
+        <p>Ponentes, agenda y presentaciones compartidas durante la jornada.</p>
+      </div>
+      <div class="panel-body">
+        <div style="margin:4px 0 2px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Ponentes y presentaciones</div><h3 style="margin:0;color:var(--navy);font-size:26px">Agenda de la jornada</h3></div>
+        <div class="speakers">
+          <article class="speaker">
+            <img src="ponente-olaya.jpg" alt="Olaya Dotel Caraballo" loading="lazy" width="360" height="360">
+            <div class="speaker-body">
+              <div class="speaker-time">9:30 – 9:40 a. m.</div>
+              <h4>Olaya Dotel Caraballo</h4>
+              <div class="speaker-role">Viceministra de Cooperación Internacional · Ministerio de la Presidencia</div>
+              <p>Palabras de apertura: propósito de la formación y resultado esperado</p>
+              <div class="speaker-actions">
+                <a class="btn btn-dark" href="Presentacion_Olaya_Dotel_Apertura_y_Metodologia.pdf" target="_blank" rel="noopener">Ver presentación</a>
+                <a class="btn btn-outline" href="Presentacion_Olaya_Dotel_Apertura_y_Metodologia.pdf" download>Descargar</a>
+              </div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="ponente-martin.jpg" alt="Martín Rivero" loading="lazy" width="360" height="360">
+            <div class="speaker-body">
+              <div class="speaker-time">9:40 – 10:20 a. m.</div>
+              <h4>Martín Rivero</h4>
+              <div class="speaker-role">Coordinador del Área de Cohesión Social y Cooperación Sur-Sur · Secretaría General Iberoamericana (SEGIB)</div>
+              <p>Conferencia central: «Cooperación Internacional para el Desarrollo: evolución, tendencias y transformaciones»</p>
+              <div class="speaker-actions">
+                <a class="btn btn-dark" href="Presentacion_Martin_Rivero_Panorama_Cooperacion_Internacional.pdf" target="_blank" rel="noopener">Ver presentación</a>
+                <a class="btn btn-outline" href="Presentacion_Martin_Rivero_Panorama_Cooperacion_Internacional.pdf" download>Descargar</a>
+              </div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="ponente-carlos.jpg" alt="Carlos Hernández" loading="lazy" width="360" height="360">
+            <div class="speaker-body">
+              <div class="speaker-time">10:20 – 10:40 a. m.</div>
+              <h4>Carlos Hernández</h4>
+              <div class="speaker-role">Director de Cooperación Internacional · Ministerio de Relaciones Exteriores (MIREX)</div>
+              <p>Política exterior y cooperación internacional: actores, prioridades y oportunidades para la acción internacional del país</p>
+              <div class="speaker-actions">
+                <a class="btn btn-dark" href="Presentacion_Carlos_Hernandez_Politica_Exterior_y_Cooperacion.pdf" target="_blank" rel="noopener">Ver presentación</a>
+                <a class="btn btn-outline" href="Presentacion_Carlos_Hernandez_Politica_Exterior_y_Cooperacion.pdf" download>Descargar</a>
+              </div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="ponente-nelson.jpg" alt="Nelson Chávez" loading="lazy" width="360" height="360">
+            <div class="speaker-body">
+              <div class="speaker-time">10:40 – 11:10 a. m.</div>
+              <h4>Nelson Chávez</h4>
+              <div class="speaker-role">Director de Desarrollo y Planificación Sectorial · Ministerio de Hacienda y Economía</div>
+              <p>Alineación de la cooperación internacional con la planificación nacional y el PNPSP 2025–2028</p>
+              <div class="speaker-actions">
+                <a class="btn btn-dark" href="Presentacion_Nelson_Chavez_Alineacion_PNPSP.pdf" target="_blank" rel="noopener">Ver presentación</a>
+                <a class="btn btn-outline" href="Presentacion_Nelson_Chavez_Alineacion_PNPSP.pdf" download>Descargar</a>
+              </div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="ponente-luis.jpg" alt="Luis Madera Sued" loading="lazy" width="360" height="360">
+            <div class="speaker-body">
+              <div class="speaker-time">11:10 – 11:30 a. m.</div>
+              <h4>Luis Madera Sued</h4>
+              <div class="speaker-role">Viceministro de Seguimiento y Coordinación Gubernamental · Ministerio de la Presidencia</div>
+              <p>Prioridades gubernamentales, metas al 2028 e identificación estratégica de necesidades de cooperación</p>
+              <div class="speaker-actions">
+                <a class="btn btn-dark" href="Presentacion_Luis_Madera_Prioridades_Gubernamentales.pdf" target="_blank" rel="noopener">Ver presentación</a>
+                <a class="btn btn-outline" href="Presentacion_Luis_Madera_Prioridades_Gubernamentales.pdf" download>Descargar</a>
+              </div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="ponente-arleny.jpg" alt="Arleny Marte Montero" loading="lazy" width="360" height="360">
+            <div class="speaker-body">
+              <div class="speaker-time">11:40 – 11:50 a. m.</div>
+              <h4>Arleny Marte Montero</h4>
+              <div class="speaker-role">Directora de Coordinación y Evaluación de la Cooperación Internacional · VIMICI, Ministerio de la Presidencia</div>
+              <p>Ruta metodológica del curso, producto final, orientaciones y próximos pasos</p>
+              <div class="speaker-actions">
+                <a class="btn btn-dark" href="Programa_del_curso_y_metodologia_de_trabajo.pdf" target="_blank" rel="noopener">Ver programa</a>
+                <a class="btn btn-outline" href="Programa_del_curso_y_metodologia_de_trabajo.pdf" download>Descargar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="note"><strong>Otros momentos de la agenda:</strong> 9:00 – 9:30 a. m. registro y recepción de participantes · 11:30 – 11:40 a. m. foto protocolar con autoridades · 11:50 a. m. – 12:00 p. m. brindis de cierre.</div>
       </div>
     </div>
   </section>
