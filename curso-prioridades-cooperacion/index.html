@@ -3,72 +3,649 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fortalecimiento de Capacidades Institucionales · SINACID</title>
+<title>Curso Virtual | Fortalecimiento de Capacidades Institucionales SINACID</title>
 <style>
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f7f9fc;font-family:Arial,Helvetica,sans-serif}
-#course{width:100%;height:100vh;border:0;display:block;background:#fff}
-#loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#f7f9fc;color:#0b2f57;z-index:5;font-weight:700}
-.asset-viewer{position:fixed;inset:0;z-index:99999;background:rgba(6,28,50,.76);display:flex;align-items:center;justify-content:center;padding:18px}
-.asset-box{width:min(1180px,96vw);height:min(92vh,900px);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.32);display:flex;flex-direction:column}
-.asset-head{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid #dbe3ec;background:#fff}
-.asset-title{font-weight:700;color:#0b2f57;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
-.asset-btn{border:1px solid #cbd8e5;background:#fff;color:#0b2f57;padding:8px 11px;border-radius:7px;font-weight:700;cursor:pointer;text-decoration:none;font-size:13px}
-.asset-btn.primary{background:#0b2f57;color:#fff;border-color:#0b2f57}
-.asset-frame{border:0;width:100%;height:100%;flex:1;background:#eef3f8}
-@media(max-width:680px){.asset-viewer{padding:0}.asset-box{width:100vw;height:100vh;border-radius:0}.asset-head{flex-wrap:wrap}.asset-title{width:100%;flex-basis:100%}}
+:root{
+  --navy:#08284a;
+  --navy2:#0e355d;
+  --navy3:#173f6b;
+  --blue:#2f5f97;
+  --soft-blue:#eaf1f8;
+  --red:#d92f45;
+  --ink:#15314d;
+  --text:#304a63;
+  --muted:#667b90;
+  --line:#d7e1ea;
+  --line2:#e9eef3;
+  --white:#ffffff;
+  --panel:#f7fafc;
+  --shadow:0 18px 40px rgba(8,40,74,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f9fc;color:var(--ink);font-family:"Gotham","Montserrat","Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),#4f83be);z-index:999}
+
+header{position:sticky;top:3px;z-index:80;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(215,225,234,.9)}
+.head{max-width:1240px;margin:auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(180deg,var(--navy),var(--navy3));position:relative;box-shadow:0 8px 20px rgba(8,40,74,.16)}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;left:10px;right:10px;border-radius:20px;background:#fff;opacity:.95}
+.brand-mark:before{top:12px;height:4px;box-shadow:0 8px 0 #fff,0 16px 0 #fff}
+.brand-txt b{display:block;font-size:16px;line-height:1;color:var(--navy)}
+.brand-txt small{display:block;margin-top:4px;color:#6b7d8e;line-height:1.2}
+.nav{display:flex;gap:18px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-size:13px;font-weight:700;color:#52697f;padding:9px 0;position:relative}
+.nav a:after{content:"";position:absolute;left:0;bottom:2px;width:0;height:2px;background:var(--red);transition:.2s}
+.nav a:hover:after{width:100%}
+
+.hero{position:relative;min-height:620px;overflow:hidden;background:#fff}
+.hero-bg{position:absolute;inset:0;background-image:url('materiales/img/fondo-1.jpg');background-size:cover;background-position:center}
+.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,34,64,.97) 0%,rgba(8,40,74,.92) 30%,rgba(8,40,74,.72) 47%,rgba(8,40,74,.20) 67%,rgba(255,255,255,0) 100%)}
+.hero-bg:before{content:"";position:absolute;inset:-2px;clip-path:polygon(0 0,49% 0,66% 100%,0 100%);background:linear-gradient(180deg,rgba(13,50,92,.86) 0%,rgba(7,33,61,.90) 100%)}
+.hero-inner{position:relative;z-index:3;max-width:1240px;margin:auto;padding:52px 26px 84px;display:grid;grid-template-columns:minmax(0,700px) minmax(280px,1fr);gap:28px;align-items:end;min-height:620px}
+.hero-copy{color:#fff;padding-top:22px}
+.mini-brand{max-width:340px;margin-bottom:34px}
+.mini-brand .cap{font-size:13px;letter-spacing:.02em;line-height:1.45;color:rgba(255,255,255,.92)}
+.mini-brand .rule{width:60px;height:4px;background:var(--red);margin:14px 0 14px;border-radius:3px}
+.kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:24px;font-weight:700}
+.hero h1{margin:0;font-size:66px;line-height:.95;letter-spacing:-.05em;color:#fff;font-weight:700;max-width:760px}
+.hero h1 .light{display:block;font-weight:400;letter-spacing:-.03em;margin-top:6px}
+.hero h1 .small{display:block;font-size:31px;line-height:1.22;letter-spacing:.08em;text-transform:uppercase;font-weight:400;margin-top:32px;color:rgba(255,255,255,.96)}
+.hero-sub{max-width:590px;margin-top:24px;color:rgba(255,255,255,.88);font-size:21px;line-height:1.5}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:13px 22px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s ease;border:1px solid transparent;cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:#fff;color:var(--navy);box-shadow:0 12px 26px rgba(0,0,0,.08)}
+.btn-primary:hover{background:#f6f8fb}
+.btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.30);color:#fff;backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-outline{background:#fff;border-color:#cad7e3;color:var(--navy)}
+.hero-side{display:flex;align-items:flex-end;justify-content:flex-end}
+.hero-result{width:100%;max-width:390px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.70);border-radius:30px;box-shadow:var(--shadow);padding:24px 24px 22px;position:relative;overflow:hidden}
+.hero-result:before{content:"";position:absolute;left:-38px;bottom:-50px;width:120px;height:120px;border-radius:50%;background:rgba(47,95,151,.08)}
+.result-grid{display:grid;grid-template-columns:78px minmax(0,1fr);gap:18px;align-items:center;position:relative;z-index:1}
+.result-ico{width:78px;height:78px;border-radius:50%;background:linear-gradient(180deg,#f1f6fb,#e4edf6);display:flex;align-items:center;justify-content:center;border:1px solid #dbe6f0;color:var(--navy)}
+.result-ico svg{width:34px;height:34px}
+.result-eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#6a84a0;margin-bottom:7px;font-weight:700}
+.result-title{font-size:15px;color:#5f7185;margin:0 0 6px}
+.result-main{font-size:21px;line-height:1.18;color:var(--navy);font-weight:700;margin:0}
+.result-bar{width:68px;height:5px;background:var(--red);border-radius:99px;margin:22px auto 0}
+.hero-wave{position:absolute;left:0;right:0;bottom:-1px;height:150px;z-index:2;pointer-events:none}
+.hero-wave svg{width:100%;height:100%}
+
+main{max-width:1240px;margin:auto;padding:0 26px 84px;position:relative;z-index:3}
+.section{padding:58px 0;scroll-margin-top:86px}
+.title{margin-bottom:26px}
+.title .eyebrow{color:#5b7d9f;letter-spacing:.20em;margin-bottom:10px}
+.title h2{margin:0;font-size:34px;letter-spacing:-.03em;color:var(--navy)}
+.title p{margin:10px 0 0;color:var(--muted);font-size:16px;line-height:1.55;max-width:760px}
+
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{position:relative;border-radius:20px;overflow:hidden;text-decoration:none;background:#fff;box-shadow:0 14px 34px rgba(8,40,74,.08);transition:.22s ease;border:1px solid #dbe5ee;display:flex;flex-direction:column;min-height:365px}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 46px rgba(8,40,74,.12)}
+.card .bg{position:relative;height:155px;background-size:cover;background-position:center;flex:0 0 auto}
+.card .bg.programa{background-image:linear-gradient(rgba(8,40,74,.05),rgba(8,40,74,.03)),url('materiales/img/fondo-2.jpg')}
+.card .bg.seccion1{background-image:linear-gradient(rgba(8,40,74,.04),rgba(8,40,74,.02)),url('materiales/img/fondo-3.jpg')}
+.card .bg.seccion2{background-image:linear-gradient(rgba(8,40,74,.04),rgba(8,40,74,.02)),url('materiales/img/fondo-4.jpg')}
+.card .bg.recursos{background-image:linear-gradient(rgba(8,40,74,.04),rgba(8,40,74,.02)),url('materiales/img/fondo-5.jpg')}
+.card .overlay{position:relative;padding:20px 22px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;flex:1;background:#fff}
+.card .state{position:absolute;top:-18px;left:22px;display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid #d9e4ee;color:#5f758b;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;box-shadow:0 7px 16px rgba(8,40,74,.08)}
+.card .state.live{color:#1f6a4c}
+.card .state.future{color:#6b7d90}
+.card .copy{max-width:100%;padding-top:7px}
+.card h3,.card h3.dark{margin:0 0 9px;font-size:23px;line-height:1.08;letter-spacing:-.025em;color:var(--navy)}
+.card p,.card p.dark{margin:0;color:#687b8e;font-size:14px;line-height:1.5}
+.card .cta,.card .cta.dark{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-width:148px;width:max-content;padding:10px 16px;border-radius:999px;background:#fff;border:1px solid #9eb3c7;color:var(--navy);font-weight:700;font-size:13px}
+.card .cta:hover{border-color:var(--navy)}
+.card .cta span:last-child{font-size:18px;line-height:1}
+
+.panel{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 12px 30px rgba(11,37,65,.05)}
+.panel-head{position:relative;padding:30px 32px;background:linear-gradient(135deg,#f9fbfd 0%,#eef3f8 100%);border-bottom:1px solid var(--line2)}
+.panel-head.photo{background-image:linear-gradient(90deg,rgba(9,36,66,.92) 0%,rgba(15,58,100,.82) 45%,rgba(15,58,100,.35) 100%),url('materiales/img/fondo-1.jpg');background-size:cover;background-position:center;color:#fff}
+.panel-head.photo .label,.panel-head.photo p,.panel-head.photo h3{color:#fff}
+.panel-head h3{margin:8px 0 8px;font-size:30px;letter-spacing:-.03em;color:var(--navy)}
+.panel-head p{margin:0;max-width:850px;color:#64798d;line-height:1.55}
+.label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6380a0;font-weight:700}
+.panel-body{padding:30px 32px}
+.locked{padding:16px 18px;background:#f7f9fb;border:1px dashed #cfdbe6;border-radius:14px;color:#738697;font-size:14px;line-height:1.5}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.tag{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;background:#f3f7fb;border:1px solid #dce5ef;color:#61788f;font-size:13px;font-weight:700}
+.activity{display:grid;grid-template-columns:54px minmax(0,1fr);gap:18px;padding:24px 0;border-top:1px solid var(--line2)}
+.activity:first-of-type{border-top:0}
+.activity-copy{position:relative;background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);border:1px solid #e5edf5;border-radius:24px;padding:20px 22px;box-shadow:0 10px 24px rgba(11,37,65,.04)}
+.activity-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);font-weight:700;margin:0 0 10px}
+.activity-label:before{content:'';width:28px;height:3px;border-radius:999px;background:var(--red);display:inline-block}
+.num{width:54px;height:54px;border-radius:18px;background:linear-gradient(180deg,var(--navy),var(--navy3));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;box-shadow:0 8px 20px rgba(8,40,74,.12)}
+.activity h4{margin:0 0 8px;color:var(--navy);font-size:22px;letter-spacing:-.02em}
+.activity p{margin:0;color:var(--text);font-size:15px;line-height:1.6}
+.activity ul{margin:12px 0 0 18px;padding:0;color:#61758a}
+.activity li{margin:6px 0;line-height:1.5}
+.note{margin-top:14px;padding:16px 18px;background:#f6f9fc;border-left:4px solid var(--blue);border-radius:14px;color:#607489;font-size:14px;line-height:1.55}
+
+.resources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.resource{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 10px 25px rgba(11,37,65,.04);transition:.2s}
+.resource:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.resource small{display:inline-block;padding:8px 12px;border-radius:999px;background:#f1f6fb;color:#6a85a0;font-size:11px;letter-spacing:.10em;text-transform:uppercase;font-weight:700}
+.resource strong{display:block;margin:16px 0 8px;font-size:21px;line-height:1.2;color:var(--navy)}
+.resource p{margin:0;color:#667a8f;font-size:14px;line-height:1.55}
+.resource.off{background:#f9fbfc;pointer-events:none;box-shadow:none}
+.resource.off strong{color:#7a8a98}
+
+footer{margin-top:18px;border-top:1px solid var(--line);background:#f5f8fb}
+.foot{max-width:1240px;margin:auto;padding:26px;display:flex;justify-content:space-between;gap:20px;color:#708191;font-size:12px}
+.quote{font-size:17px;font-style:italic;color:#46647e}
+.reveal{opacity:0;transform:translateY(14px);transition:.42s}
+.reveal.on{opacity:1;transform:none}
+
+@media(max-width:1080px){
+  .hero-inner{grid-template-columns:1fr;min-height:auto;padding-bottom:120px}
+  .hero-side{justify-content:flex-start}
+  .hero h1{font-size:62px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .nav{display:none}
+  .hero{min-height:auto}
+  .hero-inner{padding-top:42px}
+  .hero-bg:after{background:linear-gradient(180deg,rgba(7,34,64,.95) 0%,rgba(8,40,74,.86) 38%,rgba(8,40,74,.38) 100%)}
+  .hero-bg:before{clip-path:none;opacity:.75}
+  .hero h1{font-size:42px}
+  .hero h1 .small{font-size:22px;margin-top:22px}
+  .hero-sub{font-size:17px}
+  .grid,.resources{grid-template-columns:1fr}
+  .foot{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+/* Sección 2 */
+.s2-blocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 6px}
+.s2-block{background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);border:1px solid #e5edf5;border-radius:20px;padding:20px;box-shadow:0 10px 24px rgba(11,37,65,.04)}
+.s2-block-num{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:8px}
+.s2-block h4{margin:0 0 8px;color:var(--navy);font-size:19px;letter-spacing:-.01em}
+.s2-block p{margin:0 0 10px;color:var(--text);font-size:14px;line-height:1.55}
+.s2-split{display:grid;gap:10px}
+.s2-yes,.s2-no{border-radius:12px;padding:10px 12px;font-size:13px}
+.s2-yes{background:#eef6f1;color:#245c3c}.s2-no{background:#fdf0f2;color:#8c1f2d}
+.s2-yes ul,.s2-no ul{margin:6px 0 0 16px;padding:0;color:var(--text)}.s2-yes li,.s2-no li{margin:3px 0}
+.s2-chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 12px}
+.s2-chain span{background:var(--soft-blue);color:var(--navy);font-weight:700;font-size:12px;padding:7px 10px;border-radius:999px}
+.s2-chain i{font-style:normal;color:var(--red);font-weight:700}
+.s2-key{background:#f6f9fc;border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px}
+.s2-criteria{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.s2-criteria li{font-size:13px;color:var(--text);line-height:1.45;background:#f6f9fc;border-radius:10px;padding:8px 10px}
+.s2-criteria b{display:block;color:var(--navy)}
+.s2-deadline{margin-top:14px;display:inline-block;padding:10px 14px;border-radius:12px;background:#fdf0f2;border:1px solid #f3cfd5;color:#8c1f2d;font-size:14px}
+.s2-steps{list-style:none;counter-reset:st;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.s2-steps li{counter-increment:st;position:relative;background:#fff;border:1px solid #e5edf5;border-radius:18px;padding:46px 16px 16px}
+.s2-steps li:before{content:"0" counter(st);position:absolute;top:12px;left:16px;font-size:20px;font-weight:700;color:var(--red)}
+.s2-steps b{display:block;color:var(--navy);font-size:16px;margin-bottom:6px}
+.s2-steps span{display:block;color:var(--text);font-size:13px;line-height:1.5}
+@media(max-width:1080px){.s2-blocks{grid-template-columns:1fr}.s2-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.activity{grid-template-columns:1fr;gap:10px}.activity .num{width:40px;height:40px}.s2-steps{grid-template-columns:1fr}.actions .btn{flex:1 1 auto}}
+
 </style>
 </head>
 <body>
-<div id="loading">Cargando aula virtual…</div>
-<iframe id="course" src="course-content.html" title="Aula virtual SINACID"></iframe>
+<div class="progress" id="progress"></div>
+<header>
+  <div class="head">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-txt">
+        <b>SINACID</b>
+        <small>Sistema Nacional de Cooperación Internacional<br>para el Desarrollo</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#contenido">Contenido</a>
+      <a href="#programa">Programa</a>
+      <a href="#sesion1">Sección 1</a>
+      <a href="#sesion2">Sección 2</a>
+      <a href="#recursos">Recursos</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="mini-brand">
+        <div class="cap"><strong>Ministerio de la Presidencia</strong><br>Viceministerio de Cooperación Internacional</div>
+        <div class="rule"></div>
+      </div>
+      <div class="kicker">Curso virtual</div>
+      <h1>
+        Curso Virtual
+        <span class="light">Fortalecimiento de Capacidades Institucionales</span>
+        <span class="small">Prioridades de cooperación internacional al desarrollo</span>
+      </h1>
+      <div class="hero-sub">Espacio de trabajo para acompañar a las instituciones públicas en la identificación, priorización y formulación de iniciativas de cooperación internacional.</div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contenido">Comenzar</a>
+        <a class="btn btn-ghost" href="#programa">Ver programa</a>
+        <a class="btn btn-ghost" href="#recursos">Recursos y materiales</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="hero-result">
+        <div class="result-grid">
+          <div class="result-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3.5h6l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5A1.5 1.5 0 0 1 7.5 3.5H8Z"></path><path d="M14 3.8V8h4.2"></path><path d="M8.6 14.2l2.1 2.1 4.7-4.7"></path></svg>
+          </div>
+          <div>
+            <div class="result-eyebrow">Resultado del proceso</div>
+            <p class="result-title">Producto esperado del curso</p>
+            <p class="result-main">Agenda de prioridades de cooperación no reembolsable validada sectorialmente.</p>
+          </div>
+        </div>
+        <div class="result-bar"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1600 160" preserveAspectRatio="none">
+      <path d="M0,65 C250,150 460,0 770,64 C1052,122 1320,181 1600,90 L1600,160 L0,160 Z" fill="#f7f9fc"></path>
+    </svg>
+  </div>
+</section>
+
+<main>
+  <section class="section reveal" id="contenido">
+    <div class="title">
+      <div class="eyebrow">Contenido del curso</div>
+      <h2>Una ruta de aprendizaje para mayores capacidades de cooperación</h2>
+      <p>Conozca los contenidos, avance por cada sección y acceda a los recursos diseñados para fortalecer la gestión institucional de la cooperación internacional.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="materiales/Programa_del_curso_y_metodologia_de_trabajo.pdf" target="_blank" rel="noopener">
+        <div class="bg programa"></div>
+        <div class="overlay">
+          <span class="state">Documento base</span>
+          <div class="copy">
+            <h3>Programa del curso</h3>
+            <p>Objetivos, estructura, metodología de trabajo, actividades y calendario del proceso formativo.</p>
+          </div>
+          <span class="cta"><span>Abrir programa</span><span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#sesion1">
+        <div class="bg seccion1"></div>
+        <div class="overlay">
+          <span class="state live">Disponible</span>
+          <div class="copy">
+            <h3>Sección 1</h3>
+            <p>SINACID, gestión institucional, cadena de alineación y preparación para la priorización.</p>
+          </div>
+          <span class="cta"><span>Ir a la sección</span><span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#sesion2">
+        <div class="bg seccion2"></div>
+        <div class="overlay">
+          <span class="state live">Disponible</span>
+          <div class="copy">
+            <h3>Sección 2</h3>
+            <p>Identificación y priorización de intervenciones, criterios de priorización y registro de iniciativas.</p>
+          </div>
+          <span class="cta"><span>Ir a la sección</span><span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="#recursos">
+        <div class="bg recursos"></div>
+        <div class="overlay">
+          <span class="state">Repositorio</span>
+          <div class="copy">
+            <h3>Recursos y materiales</h3>
+            <p>Herramientas, formularios, referencias, videos y documentos de apoyo para el ejercicio.</p>
+          </div>
+          <span class="cta"><span>Explorar</span><span>→</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section reveal" id="programa">
+    <div class="title">
+      <div class="eyebrow">Programa</div>
+      <h2>Programa y metodología de trabajo</h2>
+      <p>Consulte el programa y la metodología de trabajo del curso. El documento presenta la ruta formativa, las actividades, el cronograma y el resultado esperado del proceso.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head photo">
+        <div class="label">Documento de consulta</div>
+        <h3>Fortalecimiento de Capacidades Institucionales</h3>
+        <p>Objetivos, estructura del proceso formativo, ruta metodológica, actividades, cronograma y resultado esperado.</p>
+      </div>
+      <div class="panel-body">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <a class="btn btn-dark" href="materiales/Programa_del_curso_y_metodologia_de_trabajo.pdf" target="_blank" rel="noopener">Abrir programa</a>
+          <a class="btn btn-outline" href="materiales/Programa_del_curso_y_metodologia_de_trabajo.pdf" download>Descargar PDF</a>
+        </div>
+        <div class="note" style="margin-top:18px"><strong>Ruta del proceso:</strong> apertura, Sección 1, Sección 2, trabajo institucional, revisión técnica y validación sectorial. El programa establece como resultado una cartera de prioridades de cooperación internacional no reembolsable y orienta su utilización posterior para la gestión de cooperación.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="sesion1">
+    <div class="title">
+      <div class="eyebrow">Sección 1</div>
+      <h2>SINACID y gestión institucional de la cooperación</h2>
+      <p>Comprender el valor estratégico de la cooperación internacional, el funcionamiento del SINACID y el rol de las instituciones públicas en su gestión, preparando las condiciones institucionales y de alineación necesarias para el ejercicio de identificación y priorización.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head photo">
+        <div class="label">Martes 29 de septiembre de 2026 · Sesión virtual</div>
+        <h3>SINACID y gestión institucional de la cooperación internacional</h3>
+        <p>Conceptos esenciales, arquitectura del SINACID, rol de los equipos de cooperación y preparación institucional para la priorización.</p>
+      </div>
+      <div class="panel-body">
+        <div class="actions">
+          <a class="btn btn-dark" href="materiales/Presentacion_Seccion_1_SINACID_y_Gestion_Institucional.pdf" target="_blank" rel="noopener">Ver presentación</a>
+          <a class="btn btn-outline" href="materiales/Presentacion_Seccion_1_SINACID_y_Gestion_Institucional.pdf" download>Descargar PDF</a>
+          <a class="btn btn-outline" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=P7Y6h1ThSE2OKQkQhuAYVQtKUtkbLqRPqPCurn1NY7pURUtaMkc1UDI5MEtPRk9WNkxSWU9IOFU5MS4u" target="_blank" rel="noopener">Registrar asistencia</a>
+        </div>
+        <div class="note" style="margin-top:-6px;margin-bottom:20px"><strong>Sesión realizada:</strong> 29 de septiembre de 2026. La presentación final está disponible para consulta y descarga.</div>
+
+        <div style="margin:30px 0 2px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Contenido de la sesión</div><h3 style="margin:0;color:var(--navy);font-size:26px">Tres bloques de trabajo</h3></div>
+
+        <div class="s2-blocks">
+          <div class="s2-block">
+            <div class="s2-block-num">Bloque 1</div>
+            <h4>Cooperación internacional para potenciar políticas públicas</h4>
+            <p>El centro de la cooperación no es el proyecto: es la gente. En un país de renta media alta, su mayor valor está en las capacidades que desarrolla y las transformaciones que hace posibles.</p>
+            <div class="s2-split">
+              <div class="s2-yes"><b>Cooperación no reembolsable</b><ul><li>Donaciones y asistencia técnica</li><li>Intervenciones de menor escala y corto plazo</li><li>Regulada por el Ministerio de la Presidencia</li><li>Requiere No Objeción SINACID</li></ul></div>
+              <div class="s2-key"><b>Recuerde:</b> la cooperación no sustituye el presupuesto institucional; lo complementa para lograr mejores resultados.</div>
+            </div>
+          </div>
+          <div class="s2-block">
+            <div class="s2-block-num">Bloque 2</div>
+            <h4>Arquitectura del SINACID y rol de los actores</h4>
+            <p>El SINACID organiza y articula la cooperación que recibe y ofrece el país: marco legal, actores, instrumentos de planificación, normas de gestión e información para la rendición de cuentas.</p>
+            <div class="s2-chain"><span>Apropiación</span><span>Alineación</span><span>Armonización</span><span>Orientación a resultados</span><span>Transparencia</span><span>Responsabilidad compartida</span></div>
+            <p class="s2-key"><b>Equipos de cooperación:</b> son el puente técnico entre las áreas sustantivas, el VIMICI y los cooperantes. No solo tramitan solicitudes: ayudan a ordenar, formular, coordinar y dar seguimiento.</p>
+          </div>
+          <div class="s2-block">
+            <div class="s2-block-num">Bloque 3</div>
+            <h4>Planificación estratégica de la cooperación</h4>
+            <p>Macroproceso de la gestión de la cooperación no reembolsable:</p>
+            <ul class="s2-criteria">
+              <li><b>1. Identificación y priorización</b> Con base en prioridades nacionales, sectoriales e institucionales. <em>Aquí estamos.</em></li>
+              <li><b>2. Identificación de cooperantes y oportunidades</b></li>
+              <li><b>3. Negociación y formulación</b></li>
+              <li><b>4. No Objeción SINACID</b></li>
+              <li><b>5. Formalización · 6. Implementación y monitoreo</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin:30px 0 2px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Actividades de la Sección 1</div><h3 style="margin:0;color:var(--navy);font-size:26px">Productos y compromisos de trabajo</h3></div>
+
+        <div class="activity">
+          <div class="num">1</div>
+          <div class="activity-copy">
+            <div class="activity-label">Actividad 1</div>
+            <h4>Complete la herramienta de priorización</h4>
+            <p>Seleccione su institución, registre cada iniciativa y complete la alineación en cascada (END → PNPSP 2025–2028 → Prioridad de Gobierno → Meta presidencial → programa o proyecto), el apoyo requerido, la población y el territorio. Cada iniciativa se guarda automáticamente; al finalizar use <b>Consultar priorización</b>.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-dark" href="herramienta-priorizacion.html" target="_blank" rel="noopener">Abrir herramienta de priorización</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="num">2</div>
+          <div class="activity-copy">
+            <div class="activity-label">Actividad 2</div>
+            <h4>Habilite un correo institucional para la gestión de cooperación</h4>
+            <p>El canal debe pertenecer a la institución y mantenerse operativo aunque cambien las personas responsables.</p>
+            <ul><li><b>Solicite el buzón</b> a la DTI o al área TIC de su institución.</li><li><b>Defina responsables:</b> punto focal principal y personas de respaldo.</li><li><b>Vincule los usuarios</b> autorizados al buzón.</li><li><b>Verifique y registre</b> el correo en el formulario institucional.</li></ul>
+            <div class="note"><strong>Si ya existe un correo institucional funcional,</strong> utilícelo y regístrelo en el formulario.</div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="num">3</div>
+          <div class="activity-copy">
+            <div class="activity-label">Actividad 3</div>
+            <h4>¿Cómo se organiza la cooperación en mi institución?</h4>
+            <p>Complete el formulario institucional: área responsable y dependencia jerárquica, equipo y funciones, capacidades instaladas, punto focal y canal institucional.</p>
+            <div class="s2-deadline"><strong>Plazo:</strong> antes de la Sección 2.</div>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-dark" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=P7Y6h1ThSE2OKQkQhuAYVQtKUtkbLqRPqPCurn1NY7pUQVNXSjdPODVHVzBTT0laVFRXN1NCR0wwMy4u" target="_blank" rel="noopener">Completar formulario institucional</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:30px 0 14px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Resumen</div><h3 style="margin:0;color:var(--navy);font-size:26px">Compromisos de esta sección</h3></div>
+        <ol class="s2-steps">
+          <li><b>Revise los instrumentos</b><span>END 2030, PNPSP 2025–2028, prioridades y metas presidenciales, política o plan sectorial, PEI y POA.</span></li>
+          <li><b>Prepare su cadena de alineación</b><span>Tenga disponibles el PEI y el POA durante la Sección 2.</span></li>
+          <li><b>Formulario institucional</b><span>Complete el formulario de organización de la cooperación institucional.</span></li>
+          <li><b>Punto focal y canal</b><span>Confirme el punto focal y el correo institucional de comunicación.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="sesion2">
+    <div class="title">
+      <div class="eyebrow">Sección 2</div>
+      <h2>Identificación y priorización de intervenciones</h2>
+      <p>A partir de lo trabajado en la Sección 1, esta sesión orienta cómo transformar prioridades y necesidades institucionales en intervenciones concretas de cooperación, cómo priorizarlas y cómo registrarlas.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head photo">
+        <div class="label">Jueves 1 de octubre de 2026 · 10:00 a. m. – 12:30 p. m. · Sesión virtual</div>
+        <h3>Identificación y priorización de intervenciones</h3>
+        <p>De la prioridad institucional a la intervención de cooperación: problema, resultado esperado, intervención y valor agregado de la cooperación.</p>
+      </div>
+      <div class="panel-body">
+        <div class="actions">
+          <a class="btn btn-dark" href="https://teams.microsoft.com/meet/273695568401501?p=rModZMuvZsMbq3A17u" target="_blank" rel="noopener">Unirse a Teams</a>
+          <a class="btn btn-outline" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=P7Y6h1ThSE2OKQkQhuAYVQtKUtkbLqRPqPCurn1NY7pURUtaMkc1UDI5MEtPRk9WNkxSWU9IOFU5MS4u" target="_blank" rel="noopener">Registrar asistencia</a>
+          <a class="btn btn-outline" href="materiales/Presentacion_Seccion_2_Identificacion_y_Priorizacion.pdf" target="_blank" rel="noopener">Ver presentación</a>
+          <a class="btn btn-outline" href="https://notebooklm.link.google/iaomPrGs95n4" target="_blank" rel="noopener">Ver video</a>
+          <a class="btn btn-outline" href="materiales/Presentacion_Seccion_2_Identificacion_y_Priorizacion.pdf" download>Descargar PDF</a>
+        </div>
+        <div class="note" style="margin-top:-6px;margin-bottom:20px"><strong>Datos de acceso a Teams:</strong> ID de reunión 273 695 568 401 501 · Código de acceso Ro2Rn2kV.</div>
+
+        <div style="margin:30px 0 2px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Contenido de la sesión</div><h3 style="margin:0;color:var(--navy);font-size:26px">Tres bloques de trabajo</h3></div>
+
+        <div class="s2-blocks">
+          <div class="s2-block">
+            <div class="s2-block-num">Bloque 1</div>
+            <h4>¿Qué hemos visto hasta ahora?</h4>
+            <p>Ideas clave de la Sección 1: SINACID, cooperación y planificación, articulación interna y gestión orientada a resultados.</p>
+            <div class="s2-split">
+              <div class="s2-yes"><b>Sí puede financiar</b><ul><li>Fortalecimiento institucional</li><li>Creación de capacidades y conocimiento</li><li>Infraestructura o equipamiento vinculado a resultados</li><li>Innovación tecnológica y sistemas de información</li><li>Acciones estratégicas para población o territorio</li></ul></div>
+              <div class="s2-no"><b>No debe financiar</b><ul><li>Sueldos, salarios o beneficios permanentes</li><li>Servicios básicos de operación ordinaria</li><li>Adquisiciones sin justificación estratégica</li><li>Actividades partidarias o proselitismo</li><li>Armamento militar y equipos bélicos</li></ul></div>
+            </div>
+          </div>
+          <div class="s2-block">
+            <div class="s2-block-num">Bloque 2</div>
+            <h4>¿Cómo identificamos una intervención?</h4>
+            <p>Una necesidad debe expresar una situación que requiere ser atendida. Para pasar de una necesidad a un resultado responda: <b>situación</b> (¿qué queremos mejorar?), <b>brecha</b> (¿qué limita el cumplimiento de la prioridad o meta?) y <b>evidencia</b> (¿qué respalda que se requiere intervenir?).</p>
+            <div class="s2-chain"><span>Problema o brecha</span><i>→</i><span>Resultado esperado</span><i>→</i><span>Intervención</span><i>→</i><span>Valor agregado de la cooperación</span></div>
+            <p class="s2-key"><b>Mensaje clave:</b> la intervención debe formularse a partir del cambio que se quiere producir, no únicamente desde las actividades que se desean ejecutar.</p>
+          </div>
+          <div class="s2-block">
+            <div class="s2-block-num">Bloque 3</div>
+            <h4>Consideraciones para la priorización</h4>
+            <p>Cada criterio es una pregunta que debe ser respondida:</p>
+            <ul class="s2-criteria">
+              <li><b>Relevancia</b> ¿Contribuye a una prioridad nacional o institucional?</li>
+              <li><b>Pertinencia</b> ¿La cooperación puede aportar valor para atender esta necesidad?</li>
+              <li><b>Impacto esperado</b> ¿Qué cambio puede generar?</li>
+              <li><b>Viabilidad</b> ¿La institución cuenta con condiciones para asegurar la implementación y sostenibilidad?</li>
+              <li><b>Oportunidad</b> ¿La intervención es compatible con los temas que aborda la cooperación?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note"><strong>Estructura de una intervención de cooperación:</strong> 1) prioridad / política / meta · 2) problema o brecha · 3) resultado esperado · 4) intervención propuesta · 5) beneficiarios · 6) tipo de apoyo requerido · 7) valor agregado de la cooperación.</div>
+
+        <div style="margin:30px 0 2px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Actividades de la Sección 2</div><h3 style="margin:0;color:var(--navy);font-size:26px">Productos y compromisos de trabajo</h3></div>
+
+        <div class="activity">
+          <div class="num">1</div>
+          <div class="activity-copy">
+            <div class="activity-label">Actividad 1</div>
+            <h4>Aplicación de la herramienta de priorización</h4>
+            <p>Registre y valore cada posible intervención en la herramienta, revisando su alineación en cascada: END → PNPSP 2025–2028 → Prioridad de Gobierno → Meta presidencial → programa o proyecto vinculado. Al finalizar, use <b>Consultar priorización</b> para revisar el orden técnico, editar o descartar propuestas.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-dark" href="herramienta-priorizacion.html" target="_blank" rel="noopener">Abrir herramienta de priorización</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="num">2</div>
+          <div class="activity-copy">
+            <div class="activity-label">Actividad 2</div>
+            <h4>Validación interna y cartera institucional preliminar</h4>
+            <p>Revise los resultados con planificación institucional, valide con las áreas sustantivas, consolide y priorice hasta cinco (5) intervenciones para conformar la cartera institucional preliminar.</p>
+            <div class="note"><strong>Rol del punto focal de cooperación:</strong> es responsable de coordinar el ejercicio a lo interno de su institución para la construcción de la cartera institucional preliminar.</div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="num">3</div>
+          <div class="activity-copy">
+            <div class="activity-label">Actividad 3</div>
+            <h4>Registro de las intervenciones priorizadas</h4>
+            <p>Registre las intervenciones priorizadas en el <b>Formulario para la presentación de iniciativas de cooperación internacional</b>.</p>
+            <div class="s2-deadline"><strong>Fecha límite de entrega:</strong> 15 de octubre de 2026.</div>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSc9v-jkdRa9D9dwHuZ5sPXcX3q-1PEOqeyiXSpNP0ycePgf0g/viewform?usp=header" target="_blank" rel="noopener">Completar formulario de iniciativas</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:30px 0 14px"><div class="eyebrow" style="color:var(--red);margin:0 0 8px;letter-spacing:.18em">Después de la Sección 2</div><h3 style="margin:0;color:var(--navy);font-size:26px">Próximos pasos y compromisos institucionales</h3></div>
+        <ol class="s2-steps">
+          <li><b>Trabajo institucional</b><span>Construcción de la cartera de prioridades. Fecha límite: 15 de octubre de 2026.</span></li>
+          <li><b>Revisión y validación interna</b><span>El Viceministerio de Cooperación Internacional revisará integridad, consistencia, duplicidades, alineación y pertinencia, y organizará una cartera preliminar por sectores.</span></li>
+          <li><b>Taller presencial</b><span>Mesas sectoriales lideradas por los responsables de planificación y cooperación internacional para revisar y validar las propuestas institucionales.</span></li>
+          <li><b>Cartera sectorial final</b><span>Incorporados los acuerdos, el Viceministerio consolidará la cartera final y la remitirá formalmente a las instituciones para revisión y validación.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="recursos">
+    <div class="title">
+      <div class="eyebrow">Recursos y materiales</div>
+      <h2>Repositorio de apoyo</h2>
+      <p>Todos los instrumentos del curso estarán concentrados en este espacio para facilitar el acceso y la navegación de las instituciones participantes.</p>
+    </div>
+    <div class="resources">
+      <a class="resource" href="herramienta-priorizacion.html" target="_blank" rel="noopener">
+        <small>Herramienta</small>
+        <strong>Priorización de iniciativas</strong>
+        <p>Facilita la evaluación, consulta, comparación y descarte de posibles iniciativas antes del ejercicio posterior de selección.</p>
+      </a>
+      <a class="resource" href="https://docs.google.com/forms/d/e/1FAIpQLSc9v-jkdRa9D9dwHuZ5sPXcX3q-1PEOqeyiXSpNP0ycePgf0g/viewform?usp=header" target="_blank" rel="noopener">
+        <small>Formulario</small>
+        <strong>Presentación de iniciativas de cooperación</strong>
+        <p>Formulario electrónico para registrar las intervenciones priorizadas por la institución. Fecha límite: 15 de octubre de 2026.</p>
+      </a>
+      <a class="resource" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=P7Y6h1ThSE2OKQkQhuAYVQtKUtkbLqRPqPCurn1NY7pUQVNXSjdPODVHVzBTT0laVFRXN1NCR0wwMy4u" target="_blank" rel="noopener">
+        <small>Formulario</small>
+        <strong>Registro de enlaces institucionales</strong>
+        <p>Registra el punto focal, el equipo institucional y el canal funcional para la gestión de la cooperación internacional.</p>
+      </a>
+      <a class="resource" href="https://mepyd.gob.do/wp-content/uploads/drive/UAAES/END/Informes%20Anuales%20END/end_2030.pdf" target="_blank">
+        <small>Referencia</small>
+        <strong>END 2030</strong>
+        <p>Estrategia Nacional de Desarrollo y marco general de alineación nacional.</p>
+      </a>
+      <a class="resource" href="https://www.hacienda.gob.do/publicacion/plan-nacional-plurianual-del-sector-publico-2025-2028/" target="_blank">
+        <small>Referencia</small>
+        <strong>PNPSP 2025–2028</strong>
+        <p>Plan Nacional Plurianual del Sector Público y prioridades de mediano plazo del Gobierno.</p>
+      </a>
+      <a class="resource" href="https://presidencia.gob.do/seccion/meta-rd" target="_blank">
+        <small>Referencia</small>
+        <strong>Meta RD 2036</strong>
+        <p>Metas estratégicas del país y referencia complementaria para la alineación.</p>
+      </a>
+
+      <div style="grid-column:1/-1;margin-top:10px;padding-top:8px">
+        <div class="eyebrow" style="color:var(--red);margin-bottom:8px">Jornada de apertura · 28 de septiembre de 2026</div>
+        <h3 style="margin:0;color:var(--navy);font-size:26px">Presentaciones de la jornada de apertura</h3>
+        <p style="margin:8px 0 2px;color:#667a8f;line-height:1.55">Materiales compartidos por los expositores sobre el panorama de la cooperación, planificación nacional, prioridades gubernamentales, política exterior y ruta metodológica del curso.</p>
+      </div>
+      <a class="resource" href="materiales/Presentacion_Olaya_Dotel_Apertura_y_Metodologia.pdf" target="_blank" rel="noopener">
+        <small>Presentación</small>
+        <strong>Apertura y ruta metodológica</strong>
+        <p>Olaya Dotel · Valor de la cooperación, rol de los responsables institucionales y ruta del proceso formativo.</p>
+      </a>
+      <a class="resource" href="materiales/Presentacion_Martin_Rivero_Panorama_Cooperacion_Internacional.pdf" target="_blank" rel="noopener">
+        <small>Presentación</small>
+        <strong>Panorama de la cooperación internacional</strong>
+        <p>Martín Rivero · Evolución del sistema, AOD, cooperación Sur-Sur y triangular y desafíos del nuevo panorama.</p>
+      </a>
+      <a class="resource" href="materiales/Presentacion_Carlos_Hernandez_Politica_Exterior_y_Cooperacion.pdf" target="_blank" rel="noopener">
+        <small>Presentación</small>
+        <strong>Política exterior y cooperación internacional</strong>
+        <p>Carlos Hernández · Actores, prioridades y oportunidades de la acción internacional del país.</p>
+      </a>
+      <a class="resource" href="materiales/Presentacion_Nelson_Chavez_Alineacion_PNPSP.pdf" target="_blank" rel="noopener">
+        <small>Presentación</small>
+        <strong>Alineación con la planificación nacional</strong>
+        <p>Nelson Chávez · PNPSP, cadena de resultados y articulación de las iniciativas de cooperación con la planificación.</p>
+      </a>
+      <a class="resource" href="materiales/Presentacion_Luis_Madera_Prioridades_Gubernamentales.pdf" target="_blank" rel="noopener">
+        <small>Presentación</small>
+        <strong>Prioridades gubernamentales</strong>
+        <p>Luis Madera · Metas priorizadas de Gobierno y orientación de la gestión pública hacia resultados de calidad de vida.</p>
+      </a>
+
+      <a class="resource" href="https://notebooklm.link.google/iaomPrGs95n4" target="_blank" rel="noopener">
+        <small>Video</small>
+        <strong>Proceso de priorización</strong>
+        <p>Video explicativo de apoyo a la Sección 2 sobre la identificación y priorización de intervenciones.</p>
+      </a>
+      <a class="resource" href="materiales/Presentacion_Seccion_1_SINACID_y_Gestion_Institucional.pdf" target="_blank" rel="noopener">
+        <small>Presentación · Sección 1</small>
+        <strong>SINACID y gestión institucional de la cooperación</strong>
+        <p>Presentación de la sesión del 29 de septiembre de 2026: valor de la cooperación, SINACID, rol de los equipos y actividades.</p>
+      </a>
+      <a class="resource" href="materiales/Presentacion_Seccion_2_Identificacion_y_Priorizacion.pdf" target="_blank" rel="noopener">
+        <small>Presentación · Sección 2</small>
+        <strong>Identificación y priorización de intervenciones</strong>
+        <p>Presentación de la sesión del 1 de octubre de 2026: de la prioridad institucional a la intervención, criterios de priorización y registro.</p>
+      </a>
+      <a class="resource" href="materiales/Programa_del_curso_y_metodologia_de_trabajo.pdf" target="_blank" rel="noopener">
+        <small>Programa</small>
+        <strong>Programa del curso y metodología de trabajo</strong>
+        <p>Documento completo con ruta metodológica, sesiones, actividades, cronograma y resultado esperado.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="quote">Cooperación hoy, capacidades para mañana.</div>
+    <div>Viceministerio de Cooperación Internacional · Ministerio de la Presidencia · Dirección de Coordinación y Evaluación de la Cooperación Internacional</div>
+  </div>
+</footer>
+
 <script>
-const frame=document.getElementById('course');
-const loading=document.getElementById('loading');
-const assetCache=new Map();
-function assetFromEmbedded(doc,key){
-  if(assetCache.has(key)) return assetCache.get(key);
-  const script=[...doc.scripts].find(s=>s.textContent.includes('const EMBEDDED_ASSETS'));
-  if(!script) return null;
-  const escaped=key.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  const re=new RegExp(escaped+'\\s*:\\s*\\{\\s*mime:\\s*"([^"]+)",\\s*name:\\s*"([^"]+)",\\s*data:\\s*"([A-Za-z0-9+/=]+)"','s');
-  const m=script.textContent.match(re); if(!m)return null;
-  const asset={mime:m[1],name:m[2],data:m[3]};assetCache.set(key,asset);return asset;
-}
-function blobUrl(asset){
-  const binary=atob(asset.data),chunk=262144,parts=[];
-  for(let i=0;i<binary.length;i+=chunk){const slice=binary.slice(i,i+chunk),bytes=new Uint8Array(slice.length);for(let j=0;j<slice.length;j++)bytes[j]=slice.charCodeAt(j);parts.push(bytes)}
-  return URL.createObjectURL(new Blob(parts,{type:asset.mime}));
-}
-function downloadAsset(asset){const url=blobUrl(asset),a=document.createElement('a');a.href=url;a.download=asset.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
-function showAsset(asset){
-  const url=blobUrl(asset),old=document.querySelector('.asset-viewer');if(old)old.remove();
-  const wrap=document.createElement('div');wrap.className='asset-viewer';
-  wrap.innerHTML=`<div class="asset-box"><div class="asset-head"><div class="asset-title"></div><button class="asset-btn" data-download>Descargar</button><button class="asset-btn primary" data-close>Cerrar</button></div><iframe class="asset-frame"></iframe></div>`;
-  wrap.querySelector('.asset-title').textContent=asset.name.replaceAll('_',' ');wrap.querySelector('.asset-frame').src=url;
-  wrap.querySelector('[data-download]').onclick=()=>downloadAsset(asset);
-  const close=()=>{wrap.remove();setTimeout(()=>URL.revokeObjectURL(url),500)};wrap.querySelector('[data-close]').onclick=close;wrap.addEventListener('click',e=>{if(e.target===wrap)close()});document.body.appendChild(wrap);
-}
-function patchText(doc){
-  [...doc.querySelectorAll('.resource')].forEach(r=>{
-    const strong=r.querySelector('strong'),p=r.querySelector('p');
-    if(strong?.textContent.trim()==='Priorización de iniciativas'&&p&&p.textContent.includes('selección preliminar')) p.textContent='Facilita la evaluación, consulta, comparación y descarte de posibles iniciativas antes del ejercicio posterior de selección.';
-  });
-  [...doc.querySelectorAll('p')].forEach(p=>{
-    if(p.textContent.includes('Localice y revise END, PNPSP 2025–2028, Meta RD 2036')) p.textContent=p.textContent.replace('Meta RD 2036','prioridades y metas presidenciales del Plan de Gobierno 2024–2028');
-  });
-}
-function patchCourse(){
-  const cw=frame.contentWindow,doc=cw.document;loading.style.display='none';patchText(doc);
-  doc.addEventListener('click',ev=>{
-    const el=ev.target.closest('[data-asset]');if(!el)return;
-    ev.preventDefault();ev.stopPropagation();ev.stopImmediatePropagation();
-    const key=el.dataset.asset;
-    if(key==='herramienta'){window.open('herramienta-priorizacion.html','_blank','noopener');return;}
-    const asset=assetFromEmbedded(doc,key);if(!asset)return;
-    if(el.dataset.download==='true')downloadAsset(asset);else showAsset(asset);
-  },true);
-}
-frame.addEventListener('load',patchCourse);
+const p=document.getElementById('progress');
+function u(){const d=document.documentElement,m=d.scrollHeight-d.clientHeight;p.style.width=(m>0?d.scrollTop/m*100:0)+'%'}
+document.addEventListener('scroll',u,{passive:true});u();
+const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(x=>o.observe(x));
 </script>
+
+
+
 </body>
 </html>
